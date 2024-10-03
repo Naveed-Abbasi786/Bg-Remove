@@ -5,10 +5,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const Navigations = [
-    { PageName: 'Remove Background', path: '#' },
-    { PageName: 'How to use', path: '404', Icon: true },
-    { PageName: 'Tools & API', path: '804' },
-    { PageName: 'Pricing', path: '34' },
+    { PageName: 'Remove Background', path: 'Upload' },
+    { PageName: 'How to use', path: '/', Icon: true },
+    { PageName: 'Tools & API', path: '/' },
+    { PageName: 'Pricing', path: '/' },
   ];
 
   return (
