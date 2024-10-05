@@ -5,7 +5,6 @@ import Example2 from '../assets/img/Example2.jpg';
 import Example3 from '../assets/img/Example3.jpg';
 import Example4 from '../assets/img/Example4.jpg';
 import Vectors from './Vectors';
-import './HeroSection.css';
 import {DarkModeContext} from '../Components/Context/UseContext';
 import { useNavigate } from 'react-router-dom';
 
