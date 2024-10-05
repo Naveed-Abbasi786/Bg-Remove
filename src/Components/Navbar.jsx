@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from '../assets/img/logo.png';
-
+import { DarkModeContext } from '../Components/Context/UseContext';
+import ToggleBtn from './ToogleBtn';  
 const Navbar = () => {
+  const { DarkMode } = useContext(DarkModeContext);  
   const [isOpen, setIsOpen] = useState(false);
 
   const Navigations = [
@@ -12,7 +14,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-md p-4 fixed w-full z-10">
+    <nav className={`${DarkMode === 'dark' ? "bg-[#1B1B1D]" : 'bg-white'} shadow-md p-4 w-full z-10`}>
       <div className="container mx-auto flex justify-between items-center">
         
         {/* Left Section: Logo */}
@@ -21,19 +23,19 @@ const Navbar = () => {
             <div className="w-12 h-12 mt-2">
               <img src={logo} alt="logo" />
             </div>
-            <span className="text-3xl font-bold text-gray-800" style={{ color: '#54616C' }}>
-              Remove <span style={{ color: '#BAC0C4' }}>bg</span>
+            <span className={`text-3xl font-bold`} style={{ color: DarkMode === 'dark' ? "#ffff" : "#54616C" }}>
+              Remove <span style={{ color: DarkMode === 'dark' ? "#ffff" : "#BAC0C4" }}>bg</span>
             </span>
           </div>
         </div>
 
         {/* Desktop View: Full Navigation Menu */}
-        <div className="hidden lg:flex  space-x-2">
+        <div className="hidden lg:flex space-x-2">
           {Navigations.map((val, ind) => (
             <a
               key={ind}
               href={val.path}
-              className="text-gray-600 text-lg font-semibold py-1 hover:bg-gray-300 px-5 hover:rounded-full flex items-center"
+              className={`${DarkMode === 'dark' ? "text-white" : "text-gray-900"} text-lg font-semibold py-1 hover:text-black hover:bg-gray-300 px-5 hover:rounded-full flex items-center`}
             >
               {val.PageName}
               {val.Icon && (
@@ -60,7 +62,7 @@ const Navbar = () => {
         <div className="hidden lg:flex space-x-4">
           <a
             href="#"
-            className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full py-2 px-4 transition duration-300"
+            className={`${DarkMode === 'dark' ? "text-white" : "text-gray-600"} hover:text-gray-900 hover:bg-gray-100 rounded-full py-2 px-4 transition duration-300`}
           >
             Log in
           </a>
@@ -71,10 +73,14 @@ const Navbar = () => {
           >
             Sign up
           </a>
+
+          {/* Toggle Button */}
+          <ToggleBtn />  {/* Pass toggle function */}
         </div>
 
-        {/* Tablet and Mobile View: Sign Up and Login only */}
-        <div className="lg:hidden flex space-x-4">
+        {/* Tablet and Mobile View: Menu Button */}
+        <div className={`lg:hidden flex space-x-2 ${DarkMode === 'dark' ? "text-white" : 'text-black'}`}>
+            <ToggleBtn />
           <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -96,24 +102,21 @@ const Navbar = () => {
 
       {/* Mobile Menu (shown on tablet and mobile view) */}
       <div
-        className={`lg:hidden bg-white shadow-md w-full overflow-hidden transition-max-height duration-500 ease-in-out ${isOpen ? 'max-h-96' : 'max-h-0'}`}
+        className={`lg:hidden ${DarkMode === 'dark' ? "bg-black" : "bg-white"} shadow-md w-full overflow-hidden transition-max-height duration-500 ease-in-out ${isOpen ? 'max-h-96' : 'max-h-0'}`}
       >
         <div className="flex flex-col items-start px-4 py-4">
-          {/* Navigation Links (Tablet and Mobile view) */}
           {Navigations.map((val, ind) => (
             <div key={ind} className="w-full">
               <a
                 href={val.path}
-                className="block w-full text-left py-2 text-gray-600 hover:bg-gray-100 hover:rounded-md"
+                className={`block w-full text-left py-2 ${DarkMode === 'dark' ? "text-white" : "text-gray-600"} hover:text-black hover:bg-gray-100 hover:rounded-md`}
               >
                 {val.PageName}
               </a>
-              <hr className="my-2"/>
+              <hr className="my-2" />
             </div>
           ))}
-          
-          {/* Mobile Login & Sign up */}
-          <a href="#" className="block w-full text-left py-2 text-gray-600 hover:bg-gray-100 hover:rounded-md">
+          <a href="#" className={`block w-full text-left ${DarkMode === 'dark' ? "text-white" : "text-gray-600"} py-2 hover:bg-gray-100 hover:rounded-md`}>
             Log in
           </a>
           <a

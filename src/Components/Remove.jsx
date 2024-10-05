@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef ,useContext } from 'react';
 import BtnIcons from './BtnIcons';
 import Links from './Links';
-import Navbar from '../Components/Navbar';
-
+import { DarkModeContext } from './Context/UseContext';
 export default function Remove(props) {
+  const {DarkMode}=useContext(DarkModeContext)
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showOriginal, setShowOriginal] = useState(false); 
@@ -71,11 +71,10 @@ export default function Remove(props) {
 
   return (
     <>
-      <Navbar />
-      <div className='w-full h-screen flex flex-col md:flex-row'>
+      <div className={`${DarkMode ==="light"?"bg-white":'bg-[#212529]'} w-full min-h-screen flex flex-col md:flex-row`}>
         {/* Left Section */}
         <div className='w-full md:w-1/2 mt-12 flex flex-col items-center md:items-start xl:ml-40'>
-          <div className="w-full h-[50vh] sm:h-[60vh] md:h-[60vh] max-[789px]:mt-20 border-4 border-[#ECF0F2] mt-6 md:mt-16">
+          <div className={`w-full h-[50vh] sm:h-[60vh] md:h-[60vh] max-[789px]:mt-20 border-4 ${DarkMode==="light"?"border-[#ECF0F2]":'border-[#886316]'}  mt-6 md:mt-16`}>
             {loading ? (
               <div className="flex items-center justify-center h-full">
                 <span className="text-lg font-semibold">Removing background...</span>

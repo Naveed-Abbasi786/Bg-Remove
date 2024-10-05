@@ -1,6 +1,6 @@
-import React from 'react'
-
+import { React } from 'react'
 export default function BtnIcons(props) {
+
   return (
     <div className='flex w-[100%] justify-between'>
         <span className='flex gap-4'>
