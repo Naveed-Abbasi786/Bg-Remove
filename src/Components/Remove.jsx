@@ -64,16 +64,15 @@ export default function Remove(props) {
     }
   };
 
-  // Toggle between original and processed image
   const ToggleImage = () => {
     setShowOriginal(prev => !prev);
   };
 
   return (
     <>
-      <div className={`${DarkMode ==="light"?"bg-white":'bg-[#212529]'} w-full min-h-screen flex flex-col md:flex-row`}>
+      <div className={`${DarkMode ==="light"?"bg-white":'bg-[#212529]'} w-full min-h-screen mt-[-3%] flex flex-col md:flex-row`}>
         {/* Left Section */}
-        <div className='w-full md:w-1/2 mt-12 flex flex-col items-center md:items-start xl:ml-40'>
+        <div className='w-full md:w-1/2 mt-12 flex flex-col items-center  md:items-start xl:ml-40'>
           <div className={`w-full h-[50vh] sm:h-[60vh] md:h-[60vh] max-[789px]:mt-20 border-4 ${DarkMode==="light"?"border-[#ECF0F2]":'border-[#886316]'}  mt-6 md:mt-16`}>
             {loading ? (
               <div className="flex items-center justify-center h-full">

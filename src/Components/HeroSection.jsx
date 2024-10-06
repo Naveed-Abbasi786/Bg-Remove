@@ -20,7 +20,7 @@ export default function HeroSection() {
     <>
       <div className={`w-full ${DarkMode === 'light' ? "bg-white" : "bg-[#212529]"}    flex flex-col lg:flex-row`}>
         {/* Left Section */}
-        <div className="flex items-center justify-center w-full  lg:w-1/2 px-4 lg:px-0">
+        <div className="flex items-center justify-center w-full  lg:w-1/2 px-4 mt-[-7%] lg:px-0">
           <div className="flex flex-col items-center lg:items-start lg:ml-48 max-[980px]:mt-10">
             <video className="rounded-3xl w-full lg:w-3/4  h-auto mb-6" loop autoPlay muted>
               <source src={RemoveBg} type="video/mp4" />
