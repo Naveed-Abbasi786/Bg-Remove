@@ -4,6 +4,7 @@ import Example1 from '../assets/img/Example1.jpg';
 import Example2 from '../assets/img/Example2.jpg';
 import Example3 from '../assets/img/Example3.jpg';
 import Example4 from '../assets/img/Example4.jpg';
+import FreeBg from '../assets/img/free.png'
 import Vectors from './Vectors';
 import {DarkModeContext} from '../Components/Context/UseContext';
 import { useNavigate } from 'react-router-dom';
@@ -29,7 +30,12 @@ export default function HeroSection() {
               Remove Image <br /> Background
             </h1>
             <span className={`${DarkMode === 'light' ? "text-gray-900" : "text-zinc-400"} mt-6 text-lg md:text-xl lg:text-2xl font-semibold text-center lg:text-left`}>
-              100% Automatically and <span className="rounded-full px-4 py-1 text-lg bg-free">Free</span>
+              100% Automatically and <span
+  className={`rounded-full px-4 py-1 text-lg bg-cover bg-center`}
+  style={{ backgroundImage: `url(${FreeBg})` }}
+>
+  Free
+</span>
             </span>
           </div>
         </div>
@@ -42,7 +48,7 @@ export default function HeroSection() {
           </div>
 
         
-<div className={`${DarkMode === 'light' ? "bg-white" : "bg-[#212529]"} w-full lg:w-2/3 h-60 md:h-80  max-[980px]:mt-10 sm:h-60 justify-center lg:p-8  ${DarkMode === 'light' ? "shadow-2xl" : "shadow-[1px_11px_85px_22px_#886316]"} rounded-3xl flex flex-col items-center lg:mt-40 lg:ml-10`}>
+<div className={`${DarkMode === 'light' ? "bg-white" : "bg-[#212529]"} w-full lg:w-2/3 h-60 md:h-80  max-[980px]:mt-10 sm:h-60 justify-center lg:p-8  ${DarkMode === 'light' ? "shadow-[1px_-1px_60px_0px_rgba(220,220,220,1)]" : "shadow-[1px_11px_85px_22px_#886316]"} rounded-3xl flex flex-col items-center lg:mt-40 lg:ml-10`}>
 
   <button onClick={uploadPage} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 text-lg lg:text-xl rounded-3xl">
     Upload Image
